@@ -1,0 +1,11 @@
+import getLiveness from '../controllers/Liveness'; 
+import getReadiness from '../controllers/Readyness';
+import { getAbout } from '../controllers/about';
+import viRouter from './api/v1';
+import {Router} from 'express';
+const rootRouter = Router();
+rootRouter.use('/api/v1', v1Router);
+rootRouter.get('/_health', getReadiness);
+rootRouter.get('/_status', getLiveness); 
+rootRouter.get('/_about', getAbout);
+export default rootRouter;
